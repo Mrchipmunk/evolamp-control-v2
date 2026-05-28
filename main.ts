@@ -44,8 +44,8 @@ radio.onReceivedString(function (receivedString) {
 })
 input.onButtonPressed(Button.B, function () {
     if (Connected == "YES") {
-        if (LightState == "ON") {
-            radio.sendString("LAMPOFF")
+        if (CRAMODE == "OFF") {
+            radio.sendString("CRAON")
             LightState = "OFF"
             basic.showString("OFF")
         } else {

@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "Lamp V3 - wfsxelo - Copy": "github:mrchipmunk/lamp-v3---wfsxelo#master"
     },
     "files": [
         "main.blocks",
