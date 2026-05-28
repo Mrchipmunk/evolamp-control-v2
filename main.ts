@@ -6,6 +6,8 @@ input.onButtonPressed(Button.A, function () {
             basic.showString("OFF")
         } else if (LightState == "OFF") {
             radio.sendString("LAMPON")
+            LightState = "ON"
+            basic.showString("ON")
         } else if (LightState == "CRAMODE" && CRAMODE == "ON") {
             radio.sendString("CRAOFF")
             CRAMODE = "OFF"
