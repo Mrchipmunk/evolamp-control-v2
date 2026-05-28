@@ -5,7 +5,7 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "Lamp V3 - wfsxelo - Copy": "github:mrchipmunk/lamp-v3---wfsxelo#master"
+        "audio-recording": "*"
     },
     "files": [
         "main.blocks",

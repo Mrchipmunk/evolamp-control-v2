@@ -6,15 +6,16 @@ input.onButtonPressed(Button.A, function () {
             basic.showString("OFF")
         } else if (LightState == "OFF") {
             radio.sendString("LAMPON")
-            LightState = "ON"
-            basic.showString("ON")
         } else if (LightState == "CRAMODE" && CRAMODE == "ON") {
             radio.sendString("CRAOFF")
             CRAMODE = "OFF"
+            LightState = "OFF"
+            basic.showString("CRAOFF")
         } else {
             basic.showString("ERR")
         }
     } else {
+        record.startRecording(record.BlockingState.Blocking)
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -45,13 +46,16 @@ radio.onReceivedString(function (receivedString) {
 input.onButtonPressed(Button.B, function () {
     if (Connected == "YES") {
         if (CRAMODE == "OFF") {
+            music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.InBackground)
             radio.sendString("CRAON")
-            LightState = "OFF"
-            basic.showString("OFF")
+            LightState = "CRAMODE"
+            CRAMODE = "ON"
+            basic.showString("CRAON")
         } else {
-            basic.showString("ERR")
+            basic.showString("USE A")
         }
     } else {
+        record.playAudio(record.BlockingState.Blocking)
         basic.showLeds(`
             . . . . .
             . . . . .
