@@ -42,6 +42,29 @@ radio.onReceivedString(function (receivedString) {
         basic.clearScreen()
     }
 })
+input.onButtonPressed(Button.B, function () {
+    if (Connected == "YES") {
+        if (LightState == "ON") {
+            radio.sendString("LAMPOFF")
+            LightState = "OFF"
+            basic.showString("OFF")
+        } else {
+            basic.showString("ERR")
+        }
+    } else {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            # # # # #
+            `)
+        basic.pause(500)
+        basic.showIcon(IconNames.No)
+        basic.pause(500)
+        basic.clearScreen()
+    }
+})
 let Connected = ""
 let LightState = ""
 let CRAMODE = ""
