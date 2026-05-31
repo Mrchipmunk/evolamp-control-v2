@@ -14,11 +14,15 @@ input.onButtonPressed(Button.A, function () {
             basic.pause(250)
             sevenSegment.writeString("OFF")
             basic.pause(250)
-            sevenSegment.writeString("EVO")
+            sevenSegment.clear()
         } else if (LightState == "OFF") {
             radio.sendString("LAMPON")
             LightState = "ON"
-            basic.showString("ON")
+            sevenSegment.writeString("LAMP")
+            basic.pause(250)
+            sevenSegment.writeString("ON")
+            basic.pause(250)
+            sevenSegment.clear()
         } else if (LightState == "CRAMODE" && CRAMODE == "ON") {
             radio.sendString("CRAOFF")
             CRAMODE = "OFF"
@@ -35,10 +39,7 @@ input.onButtonPressed(Button.A, function () {
             . . . . .
             # # # # #
             `)
-        basic.pause(500)
-        basic.showIcon(IconNames.No)
-        basic.pause(500)
-        basic.clearScreen()
+        sevenSegment.writeString("ERR1")
     }
 })
 radio.onReceivedString(function (receivedString) {
@@ -51,7 +52,7 @@ radio.onReceivedString(function (receivedString) {
             . # # # #
             # # # # #
             `)
-        basic.pause(500)
+        sevenSegment.scrollString("CONNECTED", 500)
         basic.clearScreen()
     }
 })
@@ -64,6 +65,7 @@ input.onButtonPressed(Button.B, function () {
             basic.showString("CRAON")
         } else {
             basic.showString("USE A")
+            sevenSegment.writeString("ERR2")
         }
     } else {
         basic.showLeds(`
@@ -73,10 +75,7 @@ input.onButtonPressed(Button.B, function () {
             . . . . .
             # # # # #
             `)
-        basic.pause(500)
-        basic.showIcon(IconNames.No)
-        basic.pause(500)
-        basic.clearScreen()
+        sevenSegment.writeString("ERR1")
     }
 })
 let Connected = ""
