@@ -4,6 +4,11 @@ input.onButtonPressed(Button.A, function () {
             radio.sendString("LAMPOFF")
             LightState = "OFF"
             basic.showString("OFF")
+            sevenSegment.writeString("LAMP")
+            basic.pause(250)
+            sevenSegment.writeString("OFF")
+            basic.pause(250)
+            sevenSegment.clear()
         } else if (LightState == "OFF") {
             radio.sendString("LAMPON")
             LightState = "ON"
@@ -71,11 +76,19 @@ input.onButtonPressed(Button.B, function () {
 let Connected = ""
 let LightState = ""
 let CRAMODE = ""
+sevenSegment.startSevenSegPin0()
+basic.showLeds(`
+    # . . . .
+    # . # . .
+    # . # # .
+    # . . . .
+    # # # # .
+    `)
+sevenSegment.writeString("EVO")
 CRAMODE = "OFF"
 let lightlevel = Math.map(input.lightLevel(), 0, 255, 0, 1023)
 LightState = "OFF"
 Connected = "NO"
-basic.showString("EVOTEST")
 radio.setGroup(1)
 radio.sendString("CONNECT")
 basic.showString("?")
