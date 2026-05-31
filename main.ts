@@ -3,12 +3,18 @@ input.onButtonPressed(Button.A, function () {
         if (LightState == "ON") {
             radio.sendString("LAMPOFF")
             LightState = "OFF"
-            basic.showString("OFF")
+            basic.showLeds(`
+                # . . . .
+                # . # . .
+                # . # # .
+                # . . . .
+                # # # # .
+                `)
             sevenSegment.writeString("LAMP")
             basic.pause(250)
             sevenSegment.writeString("OFF")
             basic.pause(250)
-            sevenSegment.clear()
+            sevenSegment.writeString("EVO")
         } else if (LightState == "OFF") {
             radio.sendString("LAMPON")
             LightState = "ON"
@@ -84,7 +90,7 @@ basic.showLeds(`
     # . . . .
     # # # # .
     `)
-sevenSegment.writeString("EVO")
+sevenSegment.scrollString("LINKSYSxEVO", 500)
 CRAMODE = "OFF"
 let lightlevel = Math.map(input.lightLevel(), 0, 255, 0, 1023)
 LightState = "OFF"
@@ -92,6 +98,7 @@ Connected = "NO"
 radio.setGroup(1)
 radio.sendString("CONNECT")
 basic.showString("?")
+sevenSegment.clear()
 basic.forever(function () {
 	
 })
