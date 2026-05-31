@@ -5,7 +5,8 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "audio-recording": "*"
+        "audio-recording": "*",
+        "MonkMakes 7-Segment": "github:monkmakes/monkmakes-7-segment#v1.0.0"
     },
     "files": [
         "main.blocks",

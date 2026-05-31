@@ -17,7 +17,6 @@ input.onButtonPressed(Button.A, function () {
             basic.showString("ERR")
         }
     } else {
-        record.startRecording(record.BlockingState.Blocking)
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -48,7 +47,6 @@ radio.onReceivedString(function (receivedString) {
 input.onButtonPressed(Button.B, function () {
     if (Connected == "YES") {
         if (CRAMODE == "OFF") {
-            music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.InBackground)
             radio.sendString("CRAON")
             LightState = "CRAMODE"
             CRAMODE = "ON"
@@ -57,7 +55,6 @@ input.onButtonPressed(Button.B, function () {
             basic.showString("USE A")
         }
     } else {
-        record.playAudio(record.BlockingState.Blocking)
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -78,8 +75,6 @@ CRAMODE = "OFF"
 let lightlevel = Math.map(input.lightLevel(), 0, 255, 0, 1023)
 LightState = "OFF"
 Connected = "NO"
-music.setBuiltInSpeakerEnabled(true)
-music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Ringtone), music.PlaybackMode.InBackground)
 basic.showString("EVOTEST")
 radio.setGroup(1)
 radio.sendString("CONNECT")
