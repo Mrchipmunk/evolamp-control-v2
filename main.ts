@@ -42,6 +42,10 @@ input.onButtonPressed(Button.A, function () {
         sevenSegment.writeString("ERR1")
     }
 })
+input.onButtonPressed(Button.AB, function () {
+    radio.sendString("DISABLE")
+    sevenSegment.scrollString("Off", 500)
+})
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "CONNECTED") {
         Connected = "YES"
