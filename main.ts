@@ -57,6 +57,8 @@ radio.onReceivedString(function (receivedString) {
             # # # # #
             `)
         sevenSegment.scrollString("CONNECTED", 500)
+        basic.pause(500)
+        sevenSegment.clear()
         basic.clearScreen()
     }
 })
@@ -93,7 +95,7 @@ basic.showLeds(`
     # . . . .
     # # # # .
     `)
-sevenSegment.scrollString("LINKSYSxEVO", 500)
+sevenSegment.scrollString("EVOLINKS", 500)
 CRAMODE = "OFF"
 let lightlevel = Math.map(input.lightLevel(), 0, 255, 0, 1023)
 LightState = "OFF"
@@ -102,6 +104,3 @@ radio.setGroup(1)
 radio.sendString("CONNECT")
 basic.showString("?")
 sevenSegment.clear()
-basic.forever(function () {
-	
-})
